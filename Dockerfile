@@ -22,14 +22,14 @@ RUN apt-get update && apt-get -y install \
     nginx
 
 # Download Nginx signing key
-#RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C300EE8C
+RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C300EE8C
 
 # Add to repository sources list
-#RUN add-apt-repository ppa:nginx/stable
+RUN add-apt-repository ppa:nginx/stable
 
 # Update cache and install Nginx
-#RUN apt-get update -y && apt-get -y install \
-#    nginx
+RUN apt-get update -y && apt-get -y install \
+    nginx
 # Turn off daemon mode
 # Reference: http://stackoverflow.com/questions/18861300/how-to-run-nginx-within-docker-container-without-halting
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
@@ -59,5 +59,5 @@ CMD service nginx start
 WORKDIR /var/www/html
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 8081
 #EXPOSE 443
